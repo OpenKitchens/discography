@@ -1,45 +1,28 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import MyHeader from "@molecules/Header.vue";
+import Header from "@molecules/Header.vue";
+import Marquee from "@molecules/Marquee.vue";
 
 const props = defineProps({
   serverTitle: {
     type: String,
     required: true,
-  }
+  },
 });
-
-type User = {
-  id: number;
-};
-
-const user = ref<User | null>(null);
-
-function login() {
-  user.value = { id: 1 };
-}
-
-function logout() {
-  user.value = null;
-}
-
-function signUp() {
-  // TODO: 会員登録フォームに移動する
-}
 </script>
 
 <template>
   <div>
-    <MyHeader
+    <Header
       :isLoggedIn="!!user"
       :serverTitle="props.serverTitle"
       @login="login"
       @logout="logout"
       @signUp="signUp"
     />
+    <Marquee label="【速報】日経平均株価　34年ぶり一時3万8000円台" />
     <main>
-      <div class="content-wrapper">
-      </div>
+      <div class="content-wrapper"></div>
     </main>
   </div>
 </template>
