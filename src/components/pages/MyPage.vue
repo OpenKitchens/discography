@@ -8,19 +8,17 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  marquee: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <div>
-    <Header
-      :isLoggedIn="!!user"
-      :serverTitle="props.serverTitle"
-      @login="login"
-      @logout="logout"
-      @signUp="signUp"
-    />
-    <Marquee label="【速報】日経平均株価　34年ぶり一時3万8000円台" />
+    <Header :serverTitle="props.serverTitle" />
+    <Marquee :label="props.marquee" />
     <main>
       <div class="content-wrapper"></div>
     </main>

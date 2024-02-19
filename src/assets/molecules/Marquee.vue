@@ -23,13 +23,14 @@ const emits = defineEmits(["click"]);
 .text-marquee__container {
   overflow: hidden;
   background-color: black;
-  border: solid 1px #2e2e2e;
+  border-top: solid 1px #2e2e2e;
+  border-bottom: solid 1px #2e2e2e;
 }
 .text-marquee__text {
   transform: translateX(100%);
   animation: marquee 15s linear infinite;
-  color: white;
-  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 @keyframes marquee {
   0% {
@@ -46,6 +47,9 @@ const emits = defineEmits(["click"]);
 
 button {
   background: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
   border: none;
   outline: none;
   -webkit-appearance: none;
