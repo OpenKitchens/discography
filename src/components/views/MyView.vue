@@ -10,8 +10,17 @@ const selectedBoard = (boardID: string) => {
 };
 
 const serverBoards = [
-  { label: "🎙️", boardID: "989889676438998675" },
-  { label: "🎙️", boardID: "989889676438998675" },
+  { label: "📢", boardID: "989889676438998675" },
+  { label: "🎙️", boardID: "675234834752145324" },
+  { label: "🚀", boardID: "561387495714301340" },
+  { label: "💪", boardID: "786781489325654276" },
+  { label: "💡", boardID: "363085239293757348" },
+  { label: "☕️", boardID: "132587493260984237" },
+  { label: "🗳️", boardID: "435763206823884237" },
+  { label: "🍿", boardID: "256095741389567238" },
+  { label: "🕹️", boardID: "767450246428725409" },
+  { label: "🧑🏻‍💻", boardID: "640423589342586972" },
+  { label: "🔌", boardID: "587683245278593296" },
 ];
 </script>
 

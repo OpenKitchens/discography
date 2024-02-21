@@ -34,6 +34,7 @@ button {
   padding: 0;
   font-size: 30px;
   margin: 10px;
+  width: 40px;
 }
 
 button.primary {
