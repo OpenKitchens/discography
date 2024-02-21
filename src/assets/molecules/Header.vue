@@ -12,8 +12,8 @@ const props = defineProps({
 
 <template>
   <header>
-    <img src="/icons/discography.svg" width="180" />
-    <p class="serverTitle">{{ props.serverTitle }}</p>
+    <img src="/icons/discography.svg" width="180" class="smartphone-none" />
+    <p class="serverTitle table-none">{{ props.serverTitle }}</p>
 
     <div class="QuickActions">
       <ImageButton src="/icons/message.svg" />
@@ -34,6 +34,8 @@ header {
   align-items: center;
   justify-content: space-between;
   background-image: url(/images/images.png);
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .serverTitle {
   font-weight: 900;
@@ -43,9 +45,12 @@ header {
   display: inline-block;
   vertical-align: top;
   color: white;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  width: calc(100vw - 650px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  height: 1.5rem;
 }
 
 .QuickActions {
@@ -61,9 +66,10 @@ header {
 button + button {
   margin-left: 10px;
 }
-@media screen and (max-width: 720px) {
-  .buttons {
-    display: none;
+
+@media (max-width: 767px) {
+  .QuickActions {
+    margin-left: 0;
   }
 }
 </style>

@@ -2,25 +2,41 @@
 import { ref } from "vue";
 import Header from "@molecules/Header.vue";
 import Marquee from "@molecules/Marquee.vue";
+import Boards from "@molecules/Boards.vue";
 
-const props = defineProps({
-  serverTitle: {
-    type: String,
-    required: true,
-  },
-  marquee: {
-    type: String,
-    required: true,
-  },
-});
+interface Board {
+  label: string;
+  boardID: string;
+}
+
+interface Props {
+  serverTitle: string;
+  marquee: string;
+  serverBoards: Board[];
+}
+
+const props = defineProps<Props>();
+
+const emits = defineEmits(["clickedMarquee", "selectedBoard"]);
+
+const clickedMarquee = () => {
+  emits("clickedMarquee");
+};
+
+const selectedBoard = (boardID: string) => {
+  emits("selectedBoard", `${boardID}`);
+};
 </script>
 
 <template>
   <div>
     <Header :serverTitle="props.serverTitle" />
-    <Marquee :label="props.marquee" />
+    <Marquee :label="props.marquee" @clickedMarquee="clickedMarquee" />
     <main>
-      <div class="content-wrapper"></div>
+      <Boards
+        :selectedBoard="selectedBoard"
+        :serverBoards="props.serverBoards"
+      ></Boards>
     </main>
   </div>
 </template>
