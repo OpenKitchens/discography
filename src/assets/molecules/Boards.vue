@@ -13,19 +13,24 @@ const props = defineProps<{
 const emits = defineEmits(["selectedBoard"]);
 
 const selectedBoard = (boardID: string) => {
-  emits("selectedBoard", `${boardID}`);
+  emits("selectedBoard", boardID);
 };
 </script>
 
 <template>
-  <li v-for="item in props.serverBoards">
-    {{ item.label }}
+  <div class="flexbox" v-for="item in props.serverBoards">
     <BoardsIcon
       :boardID="item.boardID"
       :label="item.label"
       @selectedBoard="selectedBoard"
     />
-  </li>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+</style>

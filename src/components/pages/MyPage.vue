@@ -24,7 +24,7 @@ const clickedMarquee = () => {
 };
 
 const selectedBoard = (boardID: string) => {
-  emits("selectedBoard", `${boardID}`);
+  emits("selectedBoard", boardID);
 };
 </script>
 
@@ -34,7 +34,7 @@ const selectedBoard = (boardID: string) => {
     <Marquee :label="props.marquee" @clickedMarquee="clickedMarquee" />
     <main>
       <Boards
-        :selectedBoard="selectedBoard"
+        @selectedBoard="selectedBoard"
         :serverBoards="props.serverBoards"
       ></Boards>
     </main>

@@ -13,7 +13,7 @@ const props = defineProps({
 const emits = defineEmits(["selectedBoard"]);
 
 const selectedBoard = () => {
-  emits("selectedBoard", `${props.boardID}`);
+  emits("selectedBoard", props.boardID);
 };
 </script>
 
@@ -25,15 +25,17 @@ const selectedBoard = () => {
 
 <style scoped>
 button {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  border: 0;
-  border-radius: 3em;
-  cursor: pointer;
-  display: inline-block;
-  line-height: 1;
-  padding: 1rem 2rem;
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  font-size: 30px;
+  margin: 10px;
 }
+
 button.primary {
   color: black;
   background-color: rgba(255, 255, 255, 0.85);
