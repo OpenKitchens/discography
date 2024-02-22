@@ -1,50 +1,61 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import MyHeader from "@molecules/Header.vue";
+import Header from "@molecules/Header.vue";
+import Marquee from "@molecules/Marquee.vue";
+import Boards from "@molecules/Boards.vue";
+import BoardImage from "@molecules/BoardImage.vue";
+import Input from "@atoms/Input.vue";
 
-const props = defineProps({
-  serverTitle: {
-    type: String,
-    required: true,
-  }
-});
+interface Board {
+  label: string;
+  boardID: string;
+}
 
-type User = {
-  id: number;
+interface Props {
+  serverTitle: string;
+  marquee: string;
+  serverBoards: Board[];
+  boardImage: string;
+  boardLabel: string;
+}
+
+const props = defineProps<Props>();
+
+const emits = defineEmits(["clickedMarquee", "selectedBoard", "input"]);
+
+const clickedMarquee = () => {
+  emits("clickedMarquee");
 };
 
-const user = ref<User | null>(null);
+const selectedBoard = (boardID: string) => {
+  emits("selectedBoard", boardID);
+};
 
-function login() {
-  user.value = { id: 1 };
-}
-
-function logout() {
-  user.value = null;
-}
-
-function signUp() {
-  // TODO: 会員登録フォームに移動する
-}
+const input = (message: string) => {
+  emits("input", message);
+};
 </script>
 
 <template>
   <div>
-    <MyHeader
-      :isLoggedIn="!!user"
-      :serverTitle="props.serverTitle"
-      @login="login"
-      @logout="logout"
-      @signUp="signUp"
-    />
-    <main>
-      <div class="content-wrapper">
+    <Header :serverTitle="props.serverTitle" />
+    <Marquee :label="props.marquee" @clickedMarquee="clickedMarquee" />
+    <main class="flex">
+      <div class="column">
+        <Boards
+          @selectedBoard="selectedBoard"
+          :serverBoards="props.serverBoards"
+        ></Boards>
+      </div>
+      <div class="column">
+        <BoardImage :src="boardImage" :label="boardLabel"></BoardImage>
+        <Input @input="input" />
       </div>
     </main>
   </div>
 </template>
 
-<style>
+<style scoped>
 .content-wrapper {
   background-color: #181818;
   padding: 25px;
@@ -62,5 +73,13 @@ function signUp() {
   .content-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column !important;
 }
 </style>
