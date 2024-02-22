@@ -26,4 +26,22 @@ body {
 
 @media (min-width: 1020px) {
 }
+
+@font-face {
+  font-family: "YuGothic-M";
+  font-weight: normal;
+  src: local("YuGothic-Medium"), local("Yu Gothic Medium"),
+    local("YuGothic-Regular");
+}
+
+@font-face {
+  font-family: "YuGothic-M";
+  font-weight: bold;
+  src: local("YoGothic-Bold"), local("Yu Gothic");
+}
+
+body {
+  font-family: -apple-system, blinkMacSystemFont, YuGothic-M, YuGothic,
+    "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
 </style>

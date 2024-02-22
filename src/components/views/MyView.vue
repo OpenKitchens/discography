@@ -22,6 +22,10 @@ const serverBoards = [
   { label: "🧑🏻‍💻", boardID: "640423589342586972" },
   { label: "🔌", boardID: "587683245278593296" },
 ];
+
+const input = (message: string) => {
+  console.log(message);
+};
 </script>
 
 <template>
@@ -31,5 +35,8 @@ const serverBoards = [
     @clickedMarquee="clickedMarquee"
     @selectedBoard="selectedBoard"
     :serverBoards="serverBoards"
+    boardImage="https://prtimes.jp/i/24007/253/resize/d24007-253-20f3b1782f185f19992d-0.png"
+    boardLabel="Discography 開発部"
+    @input="input"
   />
 </template>
